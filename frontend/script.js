@@ -13,7 +13,7 @@ app.controller("MainCtrl", function($scope, $http){
     $scope.getData = function(value) {
 
         $scope.searchTextCh = $scope.searchText;
-        let url = 'http://localhost:3002/search?q=';
+        let url = 'http://139.59.31.152:3002/search?q=';
 
         if($scope.searchText.length >= 3){
             let startTime = new Date().getTime();
