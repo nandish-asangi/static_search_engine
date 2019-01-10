@@ -1,0 +1,8 @@
+{
+    "app": {
+        "env": "dev",
+        "debug": 0,
+        "port": 3002
+    },
+    "excel_filename": "../src/storage/data.csv"
+}

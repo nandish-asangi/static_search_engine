@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html ng-app = "myApp">
+<head>
+    <title></title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.5/angular.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css">
+    <script src="script.js" ></script>
+    <style>
+        table, th , td  {
+            border: 1px solid grey;
+            border-collapse: collapse;
+            padding: 5px;
+            font-size: 14px
+        }
+        table tr:nth-child(odd) {
+            background-color: #f1f1f1;
+        }
+        table tr:nth-child(even) {
+            background-color: #ffffff;
+        }
+    </style>
+</head>
+<body>
+    <div ng-controller="MainCtrl">
+        <h1><u>UpStox - Static Search Engine</u></h1>
+        <h1>I Know, UI Sucks .. !!</h1>
+        <input type='text' ng-model='searchText' placeholder="Search a name" ng-keyup='getData($event)' />
+        <h2 ng-show="noResults">No Search Results</h2>
+        <center><img ng-show="singleChar" src="http://pngimg.com/uploads/smiley/smiley_PNG136.png" width="250" height="250" style="padding: 100px"/></center>
+        <center><img ng-show="doubleChar" src="https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2017/10/4-0cadzk8.png" width="250" height="250" style="padding: 100px"/></center>
+        <div ng-show="resultFalg">
+            <h2>Search Results</h2>
+            <table width='100%'>
+                <tr ng-show="people">
+                    <th>GivenName</th>
+                    <th>MiddleName</th>
+                    <th>SurName</th>
+                    <th>Ranking / Score</th>
+                </tr>
+                <tr ng-repeat="(givenName, record) in people">
+                    <td>{{ givenName + (' [' + givenName.length + ' Chars]') }}</td>
+                    <td>{{ record.middleName }}</td>
+                    <td>{{ record.surName }}</td>
+                    <td>{{ record.score }}</td>
+                </tr>
+            </table>
+            <h2>Recent 10 Searches Timeline</h2>
+            <table>
+                <tr>
+                    <th>API Response</th>
+                    <th>Search Key</th>
+                </tr>
+                <tr ng-repeat="(key, strKey) in timeLines">
+                    <td>{{ strKey.apiTime + ' ms' }}</td>
+                    <td>{{ strKey.strKey }}</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+</body>
+</html>
